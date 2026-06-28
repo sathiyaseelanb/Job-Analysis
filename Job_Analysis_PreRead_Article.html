@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Analysis: A Pre-Read for MBA Students</title>
+<style>
+  /* ── TOKENS ─────────────────────────────────────────────── */
+  :root {
+    --navy:      #1B3A6B;
+    --navy-mid:  #2A4F8F;
+    --gold:      #C9952A;
+    --gold-lt:   #F5EDD6;
+    --ink:       #1A1A2E;
+    --muted:     #5A6070;
+    --surface:   #FAFAF8;
+    --white:     #FFFFFF;
+    --border:    #E0E4ED;
+    --green:     #1A6B4A;
+    --green-lt:  #EAF4EF;
+    --red-lt:    #FEF3EE;
+    --red:       #B84B2A;
+
+    --font-display: 'Georgia', 'Times New Roman', serif;
+    --font-body:    'Inter', 'Segoe UI', system-ui, sans-serif;
+    --font-mono:    'Courier New', monospace;
+
+    --max-w: 740px;
+    --radius: 6px;
+  }
+
+  /* ── RESET ──────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 17px; scroll-behavior: smooth; }
+  img  { max-width: 100%; display: block; }
+
+  /* ── BASE ───────────────────────────────────────────────── */
+  body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--ink);
+    background: var(--surface);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── LAYOUT ─────────────────────────────────────────────── */
+  .wrap {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+
+  /* ── HEADER ─────────────────────────────────────────────── */
+  .site-header {
+    background: var(--navy);
+    padding: 0.6rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .site-header .inst {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+  .site-header .divider {
+    width: 1px; height: 18px;
+    background: rgba(255,255,255,0.25);
+  }
+  .site-header .course {
+    font-size: 0.7rem;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ── HERO ───────────────────────────────────────────────── */
+  .hero {
+    background: var(--navy);
+    padding: 3.5rem 1.25rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -80px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: rgba(201,149,42,0.08);
+    pointer-events: none;
+  }
+  .hero .wrap { position: relative; }
+  .hero .eyebrow {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,149,42,0.4);
+    border-radius: 3px;
+    padding: 0.2rem 0.55rem;
+    margin-bottom: 1.1rem;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 5vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+    max-width: 580px;
+  }
+  .hero .subtitle {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.72);
+    max-width: 520px;
+    line-height: 1.65;
+    margin-bottom: 2rem;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+  .hero-meta .chip {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .hero-meta .chip .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ── TOC ────────────────────────────────────────────────── */
+  .toc-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 1.1rem 1.25rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .toc-bar .wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .toc-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex-shrink: 0;
+    margin-right: 0.25rem;
+  }
+  .toc-bar a {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--navy);
+    text-decoration: none;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+  .toc-bar a:hover { background: var(--gold-lt); }
+
+  /* ── MAIN CONTENT ───────────────────────────────────────── */
+  .article-body {
+    padding: 3rem 0 4rem;
+  }
+
+  /* ── SECTION ────────────────────────────────────────────── */
+  .section {
+    margin-bottom: 3.5rem;
+    padding-bottom: 3.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-child {
+    border-bottom: none;
+  }
+
+  /* ── SECTION LABELS ─────────────────────────────────────── */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.75rem;
+  }
+  .section-label .num {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-family: var(--font-mono);
+  }
+  .section-label .bar {
+    flex: 1;
+    height: 1px;
+    background: var(--gold-lt);
+    max-width: 40px;
+  }
+
+  /* ── HEADINGS ───────────────────────────────────────────── */
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 3.5vw, 1.65rem);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--navy);
+    margin-bottom: 1.1rem;
+  }
+  h3 {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 1.75rem 0 0.55rem;
+    padding-left: 0.75rem;
+    border-left: 3px solid var(--gold);
+  }
+  h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin: 1.25rem 0 0.4rem;
+  }
+
+  /* ── PROSE ──────────────────────────────────────────────── */
+  p {
+    margin-bottom: 1rem;
+    color: var(--ink);
+  }
+  p:last-child { margin-bottom: 0; }
+  strong { font-weight: 700; color: var(--ink); }
+  em { font-style: italic; }
+
+  /* ── METHOD CARDS ───────────────────────────────────────── */
+  .method-grid {
+    display: grid;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .method-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--white);
+  }
+  .method-card .card-head {
+    background: var(--navy);
+    padding: 0.8rem 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .method-card .card-icon {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(201,149,42,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  .method-card .card-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.02em;
+  }
+  .method-card .card-body {
+    padding: 1rem 1.1rem;
+  }
+  .method-card .card-body p {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.65rem;
+  }
+  .pill {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 0.18rem 0.55rem;
+    border-radius: 20px;
+  }
+  .pill-pro  { background: var(--green-lt); color: var(--green); }
+  .pill-con  { background: var(--red-lt);   color: var(--red); }
+  .pill-when { background: var(--gold-lt);  color: #7A5A10; }
+
+  /* ── CALLOUT BOXES ──────────────────────────────────────── */
+  .callout {
+    border-radius: var(--radius);
+    padding: 1.1rem 1.25rem;
+    margin: 1.5rem 0;
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+  .callout-insight {
+    background: var(--gold-lt);
+    border-left: 4px solid var(--gold);
+  }
+  .callout-insight .callout-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7A5A10;
+    margin-bottom: 0.4rem;
+  }
+  .callout-example {
+    background: var(--green-lt);
+    border-left: 4px solid var(--green);
+  }
+  .callout-example .callout-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.4rem;
+  }
+  .callout-warning {
+    background: var(--red-lt);
+    border-left: 4px solid var(--red);
+  }
+  .callout-warning .callout-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.4rem;
+  }
+  .callout-navy {
+    background: #EEF2F9;
+    border-left: 4px solid var(--navy);
+  }
+  .callout-navy .callout-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+
+  /* ── REFLECTION BOX ─────────────────────────────────────── */
+  .reflection {
+    border: 1.5px dashed var(--navy-mid);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.25rem;
+    margin: 2rem 0 0;
+    background: #F5F7FB;
+  }
+  .reflection .ref-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.65rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .reflection ol, .reflection ul {
+    padding-left: 1.2rem;
+  }
+  .reflection li {
+    font-size: 0.88rem;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+    line-height: 1.6;
+  }
+
+  /* ── DEFINITION LIST ────────────────────────────────────── */
+  .def-grid {
+    display: grid;
+    gap: 0;
+    margin: 1.25rem 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--white);
+  }
+  .def-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    border-bottom: 1px solid var(--border);
+  }
+  .def-item:last-child { border-bottom: none; }
+  .def-term {
+    background: #EEF2F9;
+    padding: 0.75rem 0.9rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--navy);
+    display: flex;
+    align-items: flex-start;
+  }
+  .def-desc {
+    padding: 0.75rem 0.9rem;
+    font-size: 0.88rem;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  /* ── APPLICATION GRID ───────────────────────────────────── */
+  .app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.85rem;
+    margin: 1.25rem 0;
+  }
+  .app-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.9rem 1rem;
+  }
+  .app-card .app-icon {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+  .app-card .app-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+  }
+  .app-card .app-body {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* ── PROCESS STEPS ──────────────────────────────────────── */
+  .process-list {
+    margin: 1.25rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .process-step {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 0.75rem;
+    align-items: flex-start;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .process-step:last-child { border-bottom: none; }
+  .step-num {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: #FFFFFF;
+    font-size: 0.78rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+  }
+  .step-content .step-title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+  }
+  .step-content p {
+    font-size: 0.87rem;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ── CHALLENGE CARDS ────────────────────────────────────── */
+  .challenge-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin: 1.25rem 0;
+  }
+  .challenge-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.9rem 1rem;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+  .challenge-icon {
+    font-size: 1.2rem;
+    margin-top: 0.1rem;
+  }
+  .challenge-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .challenge-body {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── GLOSSARY ───────────────────────────────────────────── */
+  .glossary-grid {
+    display: grid;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--white);
+    margin: 1.25rem 0;
+  }
+  .glossary-item {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    border-bottom: 1px solid var(--border);
+  }
+  .glossary-item:last-child { border-bottom: none; }
+  .glos-term {
+    background: var(--navy);
+    color: var(--gold);
+    padding: 0.7rem 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.45;
+  }
+  .glos-def {
+    padding: 0.7rem 0.85rem;
+    font-size: 0.83rem;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  /* ── SIMULATION PREP ────────────────────────────────────── */
+  .sim-prep {
+    background: var(--navy);
+    border-radius: var(--radius);
+    padding: 1.75rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+  .sim-prep .sim-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .sim-prep h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    border-left: none;
+    padding-left: 0;
+    margin: 0 0 1rem;
+  }
+  .sim-prep p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 1rem;
+  }
+  .sim-questions {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .sim-questions li {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 0.6rem;
+    align-items: flex-start;
+  }
+  .sim-q-num {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: rgba(201,149,42,0.25);
+    color: var(--gold);
+    font-size: 0.65rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+  .sim-questions .q-text {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+  }
+
+  /* ── DISCUSSION QUESTIONS ───────────────────────────────── */
+  .dq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin: 1.25rem 0;
+  }
+  .dq-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.1rem;
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+  .dq-num {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1.3;
+  }
+  .dq-text {
+    font-size: 0.9rem;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+
+  /* ── CREDITS ────────────────────────────────────────────── */
+  .credits {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.4rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-top: 1.5rem;
+  }
+  .credits .credits-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+  .credits a {
+    color: var(--navy);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .ai-statement {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+    font-style: italic;
+  }
+
+  /* ── FOOTER ─────────────────────────────────────────────── */
+  .site-footer {
+    background: var(--navy);
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+  }
+  .site-footer p {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.45);
+    margin: 0;
+  }
+  .site-footer strong {
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* ── RESPONSIVE ─────────────────────────────────────────── */
+  @media (max-width: 600px) {
+    html { font-size: 15px; }
+    .toc-bar { display: none; }
+    .def-item { grid-template-columns: 1fr; }
+    .def-term { border-bottom: 1px solid var(--border); }
+    .glossary-item { grid-template-columns: 1fr; }
+    .glos-term { border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .process-step { grid-template-columns: 36px 1fr; }
+    .dq-item { grid-template-columns: 28px 1fr; }
+    .challenge-item { grid-template-columns: 1fr; }
+    .challenge-icon { display: none; }
+    .sim-prep { padding: 1.25rem 1rem; }
+    .hero { padding: 2.5rem 1.25rem 2rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+
+  @media print {
+    .toc-bar, .site-header { display: none; }
+    .hero { background: var(--navy) !important; -webkit-print-color-adjust: exact; }
+    body { font-size: 12pt; }
+    h2 { font-size: 16pt; }
+    .section { page-break-inside: avoid; }
+    a { text-decoration: none; color: inherit; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── SITE HEADER ──────────────────────────────────────── -->
+<header class="site-header">
+  <span class="inst">CHRIST (Deemed to be University)</span>
+  <span class="divider"></span>
+  <span class="course">MBA Programme · Compensation Management</span>
+</header>
+
+<!-- ── HERO ─────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Pre-Read · Simulation Module</span>
+    <h1>Job Analysis: The Foundation of Every People Decision</h1>
+    <p class="subtitle">Before you can hire, train, pay, or promote anyone, you need to understand the job itself. This article builds that understanding — and prepares you to conduct a job analysis simulation.</p>
+    <div class="hero-meta">
+      <span class="chip"><span class="dot"></span>MBA Students</span>
+      <span class="chip"><span class="dot"></span>~25 min read</span>
+      <span class="chip"><span class="dot"></span>Self-paced</span>
+      <span class="chip"><span class="dot"></span>Simulation Prep</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── STICKY TOC ────────────────────────────────────────── -->
+<nav class="toc-bar" aria-label="Page sections">
+  <div class="wrap">
+    <span class="toc-label">Jump to</span>
+    <a href="#s1">Why It Matters</a>
+    <a href="#s2">Understanding a Job</a>
+    <a href="#s3">What JA Generates</a>
+    <a href="#s4">Methods</a>
+    <a href="#s5">Process</a>
+    <a href="#s6">Applications</a>
+    <a href="#s7">Challenges</a>
+    <a href="#s8">AI &amp; Analytics</a>
+    <a href="#s9">Simulation Prep</a>
+    <a href="#s10">Glossary</a>
+  </div>
+</nav>
+
+<!-- ── ARTICLE BODY ──────────────────────────────────────── -->
+<main class="article-body">
+<div class="wrap">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 1 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="s1">
+  <div class="section-label">
+    <span class="num">01</span><span class="bar"></span>
+  </div>
+  <h2>Why Job Analysis Matters</h2>
+
+  <p>Imagine you are the HR head at a growing logistics firm. A warehouse manager resigns, and you need to replace them. Where do you start? Most people reach immediately for a job posting — but that instinct skips the most important question: <strong>what does this job actually require?</strong></p>
+
+  <p>Job analysis is the disciplined process of answering that question. It is a thorough, systematic investigation into a specific role — what the person in it does, what skills they need to do it well, and the conditions under which that work happens. It sounds straightforward, but in practice it is one of the most consequential and underused tools in HR.</p>
+
+  <p>The word "systematic" is doing real work in that definition. Job analysis is not asking a manager what they think the job is, or copying an old job description, or looking at what a competitor posts online. It involves structured data collection from multiple sources — direct observation, interviews, questionnaires, and work logs — to build an evidence-based picture of a role as it actually exists.</p>
+
+  <h3>Why Organisations Conduct Job Analysis</h3>
+
+  <p>Organisations conduct job analysis for three broad reasons. The first is <strong>accuracy</strong> — to understand what the job really involves, not what someone assumes it involves. Roles evolve over time, often silently. A "Customer Service Executive" at a firm five years ago may have handled phone calls; today that role might involve managing social media complaints, handling refund approvals, and training new joiners — none of which appeared in the original job description.</p>
+
+  <p>The second reason is <strong>alignment</strong>. When job requirements are documented precisely, hiring criteria, training programmes, performance reviews, and pay structures can all be aligned to the same evidence base. Without that foundation, each HR activity uses a slightly different — and potentially contradictory — picture of what the job requires.</p>
+
+  <p>The third reason is <strong>compliance and fairness</strong>. In many jurisdictions, the legal defensibility of hiring decisions, terminations, and compensation structures depends on documented job requirements. An organisation that cannot demonstrate what a job requires — and that its selection criteria are genuinely related to those requirements — is exposed to significant legal risk.</p>
+
+  <h3>The Strategic Importance of Job Analysis</h3>
+
+  <p>Modern organisations increasingly recognise that job analysis is not an administrative formality. It is a strategic input. When a company is designing a new organisational structure, evaluating whether to automate a function, developing a leadership pipeline, or restructuring after a merger, the foundational question in each case is the same: <em>what do our jobs actually require, and what do they produce?</em> Job analysis provides the data to answer it.</p>
+
+  <div class="callout callout-insight">
+    <div class="callout-label">💡 Key Insight</div>
+    <p style="margin:0">Job analysis shifts HR from assumption to evidence. It ensures that every people decision — who you hire, how you train them, what you pay them, how you measure their performance — is grounded in a clear, documented understanding of what the work actually demands.</p>
+  </div>
+
+  <div class="reflection">
+    <div class="ref-label">✦ Reflect</div>
+    <ol>
+      <li>Think of a job you know well — a family member's, a former employer's, or your own. How much of what that person actually does each day would you find in their formal job description?</li>
+      <li>Why might a manager's description of a role differ from an employee's description of the same role? What does that gap mean for HR decisions?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 2 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="s2">
+  <div class="section-label">
+    <span class="num">02</span><span class="bar"></span>
+  </div>
+  <h2>Understanding a Job</h2>
+
+  <p>Before you can analyse a job, you need to be precise about what you mean by "job." In everyday conversation, people use the words job, role, position, and occupation interchangeably. In HR, each has a distinct meaning — and confusing them produces confused analysis.</p>
+
+  <div class="def-grid">
+    <div class="def-item">
+      <div class="def-term">Task</div>
+      <div class="def-desc">A single, discrete unit of work with a clear beginning and end. Example: "Enter customer order data into the ERP system."</div>
+    </div>
+    <div class="def-item">
+      <div class="def-term">Duty</div>
+      <div class="def-desc">A cluster of related tasks that together constitute a major area of responsibility. Example: "Process customer orders" (comprising several tasks).</div>
+    </div>
+    <div class="def-item">
+      <div class="def-term">Responsibility</div>
+      <div class="def-desc">The broader obligation or area of accountability for which the jobholder is answerable. Example: "Ensure accurate and timely order fulfilment."</div>
+    </div>
+    <div class="def-item">
+      <div class="def-term">Position</div>
+      <div class="def-desc">A specific slot in the organisation occupied by one person. A firm may have thirty positions titled "Sales Executive."</div>
+    </div>
+    <div class="def-item">
+      <div class="def-term">Job</div>
+      <div class="def-desc">A group of positions with sufficiently similar duties and responsibilities to be covered by a single analysis and job description.</div>
+    </div>
+    <div class="def-item">
+      <div class="def-term">Role</div>
+      <div class="def-desc">The expected behaviours, contributions, and outputs associated with a position — often broader and more contextual than the formal job title.</div>
+    </div>
+    <div class="def-item">
+      <div class="def-term">Occupation</div>
+      <div class="def-desc">A broad category of work that spans organisations and industries. Example: "Accountant" as an occupation encompasses many different specific jobs.</div>
+    </div>
+  </div>
+
+  <p>The practical distinction that matters most for job analysis is between <strong>tasks</strong> and <strong>competencies</strong>. A task describes what someone does ("writes SQL queries to extract sales data"). A competency describes what capability enables them to do it ("advanced SQL programming skills"). Job analysis must capture both — because tasks tell you what the job produces, and competencies tell you what the person must bring to it.</p>
+
+  <h3>The Components of a Job</h3>
+
+  <p>A complete job analysis investigates four dimensions of any role. The <strong>technical dimension</strong> covers the specific activities performed and the tools, systems, or equipment used. The <strong>competency dimension</strong> covers the knowledge, skills, and abilities the jobholder must possess. The <strong>contextual dimension</strong> covers the working conditions — physical environment, shift patterns, reporting relationships, and psychosocial demands. And the <strong>outcome dimension</strong> covers what the job is supposed to produce — the outputs or results for which the jobholder is held accountable.</p>
+
+  <div class="callout callout-example">
+    <div class="callout-label">📋 Real-World Example</div>
+    <p style="margin:0">A warehouse fulfillment specialist at an e-commerce firm might have tasks that include "scan and load packages onto conveyor belts" and "operate barcode scanning terminals." Their competencies include physical endurance, multilingual communication, and familiarity with warehouse management software. Their working conditions include heat exposure, 10-hour standing shifts, and a noisy environment. And their outcomes include daily throughput targets and SLA compliance. All four dimensions are needed for a complete picture.</p>
+  </div>
+
+  <div class="reflection">
+    <div class="ref-label">✦ Reflect</div>
+    <ol>
+      <li>Pick any job title you are familiar with. List three tasks, one duty, and one competency associated with it. Notice how different they feel to write.</li>
+      <li>Why is the outcome dimension often the most difficult to document — and why might it be the most important?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 3 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="s3">
+  <div class="section-label">
+    <span class="num">03</span><span class="bar"></span>
+  </div>
+  <h2>What Information Does Job Analysis Generate?</h2>
+
+  <p>The raw output of a job analysis is data — structured information about a role. But that data is only valuable when converted into usable documents. Job analysis typically produces two primary outputs, supported by a set of derived tools.</p>
+
+  <h3>Job Description</h3>
+  <p>A job description (JD) is a factual document that describes what the job involves. A well-written JD includes the job title and classification, the department and reporting line, a brief purpose statement, a list of key responsibilities (typically distinguishing between core, peripheral, and emergent tasks), working conditions, and a note on the scope of decision-making authority. The JD describes the job — not the person who will fill it.</p>
+
+  <h3>Job Specification</h3>
+  <p>A job specification translates the requirements documented in the JD into the human requirements for the role. It answers: what must a person bring to this job in order to perform it competently? This includes minimum educational qualifications, required experience, essential technical and interpersonal skills, and any physical requirements. The job specification is the basis for selection criteria — and in a legally contested hiring decision, it is the document that either defends the process or exposes its weaknesses.</p>
+
+  <h3>KSAs — Knowledge, Skills, and Abilities</h3>
+  <p>The KSA framework is widely used to structure the competency dimension of job analysis. <strong>Knowledge</strong> refers to the body of information a person must possess (e.g., knowledge of Indian labour law). <strong>Skills</strong> are practised capabilities that can be demonstrated and measured (e.g., proficiency in SQL query writing). <strong>Abilities</strong> are stable capacities — both cognitive and physical — that underpin performance (e.g., the ability to remain alert during a 12-hour monitoring shift). Some frameworks add a fourth category — <strong>Other characteristics</strong> — to capture personality traits, values, or contextual factors (producing KSAO).</p>
+
+  <h3>Working Conditions and Reporting Relationships</h3>
+  <p>Job analysis also documents the physical and psychosocial environment in which the job is performed. This includes the physical setting, environmental hazards or demands, shift patterns, and the web of relationships — reporting lines, peer dependencies, and cross-functional interactions — that the jobholder must navigate. These are not peripheral details. Working conditions directly affect compensation structures, health and safety obligations, and the realism of the recruitment process.</p>
+
+  <div class="callout callout-warning">
+    <div class="callout-label">⚠ Common Mistake</div>
+    <p style="margin:0">Many organisations stop at the job description and never produce a proper job specification. The result: selection decisions are made on the basis of impression rather than documented evidence, and training needs are identified reactively rather than proactively. A JD without a JS is half an analysis.</p>
+  </div>
+
+  <div class="reflection">
+    <div class="ref-label">✦ Reflect</div>
+    <ol>
+      <li>What is the difference between a skill and an ability? Give one example of each for a data analyst role.</li>
+      <li>Why do you think working conditions are often left out of job descriptions — and what are the consequences of that omission?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 4 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="s4">
+  <div class="section-label">
+    <span class="num">04</span><span class="bar"></span>
+  </div>
+  <h2>Methods of Job Analysis</h2>
+
+  <p>No single method gives you a complete picture of a job. Each has a different angle of entry, different strengths, and different blind spots. Good job analysis is almost always multi-method — you triangulate across sources until the picture stabilises. Below are the six core methods, with honest assessments of when each earns its place.</p>
+
+  <div class="method-grid">
+
+    <!-- OBSERVATION -->
+    <div class="method-card">
+      <div class="card-head">
+        <div class="card-icon">👁</div>
+        <div class="card-title">Observation</div>
+      </div>
+      <div class="card-body">
+        <p>An analyst shadows the jobholder for one or more shifts, watching what they actually do — not what they say they do. The observer takes detailed notes on tasks, tools, time allocation, physical demands, and interactions, without intervening in the work.</p>
+        <p>Observation is uniquely good at capturing what people do instinctively or informally — the workarounds, the undocumented fixes, the informal coordination that never appears in any process document. A warehouse analyst observing a fulfillment specialist might notice the employee performing IT scanner resets three times a shift — a task entirely absent from the formal job description, with real implications for safety, training, and compensation.</p>
+        <div class="pill-row">
+          <span class="pill pill-pro">✓ Captures real work</span>
+          <span class="pill pill-pro">✓ No self-report bias</span>
+          <span class="pill pill-con">✗ Hawthorne effect</span>
+          <span class="pill pill-con">✗ Misses cognitive work</span>
+          <span class="pill pill-when">Best for: physical & operational roles</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- INTERVIEWS -->
+    <div class="method-card">
+      <div class="card-head">
+        <div class="card-icon">🎙</div>
+        <div class="card-title">Interviews</div>
+      </div>
+      <div class="card-body">
+        <p>The analyst conducts structured or semi-structured interviews with the jobholder, their manager, and sometimes peers. The interview is not a casual chat — it is a designed conversation that systematically covers tasks, KSAs, working conditions, and context.</p>
+        <p>Interviews are the most versatile method. They can surface not only what someone does, but why they do it, how they decide, what challenges they encounter, and what expertise is hard to articulate. A fleet dispatch coordinator, for example, might describe in an interview how she mentally models the entire delivery network before rerouting during a crisis — something no observation could fully capture.</p>
+        <div class="pill-row">
+          <span class="pill pill-pro">✓ Rich & nuanced data</span>
+          <span class="pill pill-pro">✓ Surfaces tacit knowledge</span>
+          <span class="pill pill-con">✗ Time-intensive</span>
+          <span class="pill pill-con">✗ Prone to social desirability</span>
+          <span class="pill pill-when">Best for: complex, cognitive, or managerial roles</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUESTIONNAIRES -->
+    <div class="method-card">
+      <div class="card-head">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Questionnaires & Surveys</div>
+      </div>
+      <div class="card-body">
+        <p>Structured questionnaires are distributed to large groups of jobholders. Questions may be open-ended (asking people to describe their tasks in their own words) or closed (rating the frequency or importance of pre-specified tasks on a scale). The Position Analysis Questionnaire (PAQ) is a well-known standardised instrument used globally.</p>
+        <p>Questionnaires are the only method that scales efficiently to large numbers of similar roles — if you need to analyse 300 sales executive positions across India, you cannot interview or observe all of them. The data is also readily quantifiable. The limitation is that the quality of the output depends entirely on the quality of the questions — a poorly designed questionnaire produces structured garbage.</p>
+        <div class="pill-row">
+          <span class="pill pill-pro">✓ Scalable</span>
+          <span class="pill pill-pro">✓ Quantifiable data</span>
+          <span class="pill pill-con">✗ Misses informal tasks</span>
+          <span class="pill pill-con">✗ Respondent fatigue</span>
+          <span class="pill pill-when">Best for: large-scale, standardised roles</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- WORK DIARIES -->
+    <div class="method-card">
+      <div class="card-head">
+        <div class="card-icon">📓</div>
+        <div class="card-title">Work Diaries & Activity Logs</div>
+      </div>
+      <div class="card-body">
+        <p>The jobholder keeps a structured daily log of their activities over a defined period — typically one to two weeks. They record what they did, how long they spent on it, and any notable events or decisions. In modern contexts, this log might take the form of timestamped digital records, WhatsApp messages, or email trails as much as a written diary.</p>
+        <p>This method is particularly valuable for roles where the work is unpredictable, episodic, or varies significantly across seasons. A fleet coordinator's logbook capturing a crisis episode during the festive delivery surge tells you far more about the real demands of the role than any standard week's observation would.</p>
+        <div class="pill-row">
+          <span class="pill pill-pro">✓ Captures variability</span>
+          <span class="pill pill-pro">✓ Naturalistic data</span>
+          <span class="pill pill-con">✗ Completion burden on employee</span>
+          <span class="pill pill-con">✗ Selective recording bias</span>
+          <span class="pill pill-when">Best for: episodic, high-variability roles</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRITICAL INCIDENT -->
+    <div class="method-card">
+      <div class="card-head">
+        <div class="card-icon">⚡</div>
+        <div class="card-title">Critical Incident Technique</div>
+      </div>
+      <div class="card-body">
+        <p>Developed by John Flanagan in 1954, the Critical Incident Technique (CIT) asks jobholders and supervisors to describe specific, concrete episodes — real events when the job was performed particularly well or particularly poorly. Each incident is documented in detail: what was the situation, what did the person do, and what were the consequences?</p>
+        <p>CIT is uniquely powerful for capturing the <em>competencies</em> that differentiate high from average performance, rather than just the average task profile. If you want to understand what separates an excellent demand analyst from a mediocre one, you do not ask them to list their tasks — you ask them to describe the hardest forecasting decision they ever made and walk you through it.</p>
+        <div class="pill-row">
+          <span class="pill pill-pro">✓ Identifies performance differentiators</span>
+          <span class="pill pill-pro">✓ Grounded in real events</span>
+          <span class="pill pill-con">✗ Recall bias</span>
+          <span class="pill pill-con">✗ Skews to extremes</span>
+          <span class="pill pill-when">Best for: competency modelling, senior roles</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMBINATION -->
+    <div class="method-card">
+      <div class="card-head">
+        <div class="card-icon">🔗</div>
+        <div class="card-title">Combination Approaches</div>
+      </div>
+      <div class="card-body">
+        <p>Professional HR practice uses multiple methods, not one. A typical combination approach might begin with document review (existing JDs, process maps, performance review data) to build a hypothesis about the role, follow with interviews of two or three jobholders to test and enrich that hypothesis, use a brief observation to validate the physical and environmental dimensions, and conclude with a structured questionnaire to confirm findings across a larger group.</p>
+        <p>The key principle is triangulation: if an interview, an observation, and a work log all converge on the same picture of a task's demands, you can have high confidence in that picture. Where they diverge, you have found something worth investigating.</p>
+        <div class="pill-row">
+          <span class="pill pill-pro">✓ Most accurate</span>
+          <span class="pill pill-pro">✓ Triangulates across sources</span>
+          <span class="pill pill-con">✗ Resource-intensive</span>
+          <span class="pill pill-when">Best for: high-stakes roles, legal defensibility</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout callout-insight">
+    <div class="callout-label">💡 Method Selection Principle</div>
+    <p style="margin:0">The right method depends on the nature of the work, the purpose of the analysis, and the resources available. <strong>Physical and operational roles</strong> are best understood through observation. <strong>Cognitive and managerial roles</strong> require interviews and CIT. <strong>Large-scale role families</strong> need questionnaires. The professional standard is always to combine at least two methods.</p>
+  </div>
+
+  <div class="reflection">
+    <div class="ref-label">✦ Reflect</div>
+    <ol>
+      <li>For a data analyst role at a tech firm, which method would you trust least — and why?</li>
+      <li>What does the Critical Incident Technique tell you that a task list cannot? Give a specific example.</li>
+      <li>If you had a budget of three days and one analyst, which combination of methods would you use for a customer service role, and why?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 5 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="s5">
+  <div class="section-label">
+    <span class="num">05</span><span class="bar"></span>
+  </div>
+  <h2>The Job Analysis Process</h2>
+
+  <p>Job analysis does not begin with a clipboard and an interview guide. It begins with planning — and it ends not with a document, but with a review cycle. Here is the professional process from start to finish.</p>
+
+  <div class="process-list">
+    <div class="process-step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">Plan and Define the Purpose</div>
+        <p>Clarify why this analysis is being conducted. Is it for recruitment? Compensation review? Restructuring? The purpose determines which dimensions of the job matter most and which methods are appropriate. An analysis conducted for job evaluation (determining a job's relative worth for pay purposes) needs different data from one conducted for training needs analysis.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">Select Jobs and Identify Stakeholders</div>
+        <p>Not all roles can be analysed simultaneously. Prioritise roles that are being newly created, significantly changed, or flagged as misaligned with current requirements. Identify the right stakeholders for each role — typically the current jobholder (or a representative sample), the direct manager, and any internal or external customers whose work depends on this role's outputs.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-title">Collect Information</div>
+        <p>Execute the chosen methods. Conduct observations, run interviews, distribute questionnaires, and review existing documentation. Gather information from multiple sources and multiple perspectives. Document everything systematically — the raw data from this stage is the evidentiary foundation for all subsequent decisions.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="step-title">Analyse and Validate the Data</div>
+        <p>Review and synthesise the collected information. Identify patterns, resolve contradictions, and make explicit judgments about which tasks are core versus peripheral, which KSAs are essential versus desirable, and which conditions are typical versus exceptional. Present findings to the jobholder and manager for validation — discrepancies are information, not failure.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <div class="step-title">Develop Job Documentation</div>
+        <p>Translate validated findings into usable documents — primarily the job description and job specification. These should be written in clear, action-oriented language. Each task should begin with a strong verb ("coordinates," "analyses," "resolves"). Informal or emergent tasks identified during the analysis should be explicitly flagged, with a recommendation for whether and how they should be formalised.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <div class="step-title">Update and Review Regularly</div>
+        <p>A job description written in 2020 may be significantly out of date by 2024. Jobs evolve — technology changes what tasks are automated, market pressures change what outcomes are prioritised, and organisational growth changes reporting relationships. Best practice schedules a formal review of all job documentation every 18 to 24 months, and immediately when a role changes significantly.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reflection">
+    <div class="ref-label">✦ Reflect</div>
+    <ol>
+      <li>At what step of the process would you identify that a job has changed significantly since its last analysis? What would be the indicators?</li>
+      <li>Why is stakeholder validation (Step 4) important — and what should you do when the jobholder and the manager give contradictory accounts of the role?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 6 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="s6">
+  <div class="section-label">
+    <span class="num">06</span><span class="bar"></span>
+  </div>
+  <h2>Applications of Job Analysis in HRM</h2>
+
+  <p>Job analysis is not a standalone exercise. It is the root system that feeds every major HR function. Understanding where it connects helps you see why imprecision in job analysis creates cascading problems across the organisation.</p>
+
+  <div class="app-grid">
+    <div class="app-card">
+      <div class="app-icon">🎯</div>
+      <div class="app-title">Recruitment & Selection</div>
+      <div class="app-body">Job specifications define the selection criteria. Without accurate KSAs, you hire for the wrong things — or fail to justify why you hired the way you did.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-icon">📚</div>
+      <div class="app-title">Training & Development</div>
+      <div class="app-body">Gap analysis between required KSAs (from the job spec) and current employee capabilities identifies training priorities. Job analysis makes training strategic, not reactive.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-icon">📊</div>
+      <div class="app-title">Performance Management</div>
+      <div class="app-body">Performance standards and appraisal criteria should be derived directly from the job's documented responsibilities and outcomes — not from a manager's personal preferences.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-icon">💰</div>
+      <div class="app-title">Compensation & Job Evaluation</div>
+      <div class="app-body">Job evaluation methods — including the Hay Guide Chart — use the data from job analysis to determine the relative internal worth of roles and build equitable pay structures.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-icon">🔭</div>
+      <div class="app-title">Career Planning</div>
+      <div class="app-body">Mapping the competency requirements across roles at different levels enables employees to see what they need to develop for a promotion — and organisations to plan succession rationally.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-icon">🏗</div>
+      <div class="app-title">Workforce Planning</div>
+      <div class="app-body">Understanding what jobs exist, what they require, and how they relate to each other is the prerequisite for any serious redesign of organisational structure or headcount planning.</div>
+    </div>
+  </div>
+
+  <div class="callout callout-example">
+    <div class="callout-label">📋 Connecting the Dots</div>
+    <p style="margin:0">Consider a logistics firm that discovers — through job analysis — that its fleet coordinators are routinely making autonomous crisis decisions that carry ₹1,00,000/day financial exposure, despite carrying only a "Coordinator" designation and pay grade. That single finding from job analysis simultaneously triggers a compensation review (was she paid for this level of responsibility?), a title and grade reclassification, a training intervention (does she have the decision-making tools she needs?), a performance management recalibration (are we measuring the right things?), and a succession planning conversation (who covers this role when she leaves?). One analysis, six downstream actions.</p>
+  </div>
+
+  <div class="reflection">
+    <div class="ref-label">✦ Reflect</div>
+    <ol>
+      <li>Which HR function do you think suffers most when job analysis is poor or absent? Defend your answer.</li>
+      <li>How would an organisation know that its performance management system is misaligned with the actual demands of its roles?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 7 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="s7">
+  <div class="section-label">
+    <span class="num">07</span><span class="bar"></span>
+  </div>
+  <h2>Challenges in Conducting Job Analysis</h2>
+
+  <p>Job analysis is not as clean in practice as it is in theory. Anyone who has conducted one knows that real organisations create real complications. Here are the four most significant ones — and what professional practice recommends in response.</p>
+
+  <div class="challenge-list">
+    <div class="challenge-item">
+      <div class="challenge-icon">⚡</div>
+      <div>
+        <div class="challenge-title">Rapidly Changing Jobs and Technology</div>
+        <p class="challenge-body">Technology — automation, AI, and platform systems — is restructuring job content faster than documentation cycles can track. A customer service role that involved phone calls five years ago now involves managing chatbots, handling escalations from automated systems, and analysing conversation data. By the time a job description is written, it may already be partially out of date. The response is to treat job analysis as a continuous process, not a periodic project, and to build agility into documentation formats.</p>
+      </div>
+    </div>
+    <div class="challenge-item">
+      <div class="challenge-icon">🏠</div>
+      <div>
+        <div class="challenge-title">Remote and Hybrid Work</div>
+        <p class="challenge-body">When work is distributed across locations and time zones, traditional observation is impossible and the working conditions dimension of job analysis becomes far more complex. Remote workers also tend to take on informal coordination and technology management tasks that are invisible in any standard analysis. The methods must adapt — digital diaries, virtual interviews, and analysis of digital workflow data are becoming standard tools.</p>
+      </div>
+    </div>
+    <div class="challenge-item">
+      <div class="challenge-icon">🎭</div>
+      <div>
+        <div class="challenge-title">Employee Bias and Information Inaccuracies</div>
+        <p class="challenge-body">Jobholders have motives that can distort the information they provide during a job analysis. They may exaggerate the complexity or demands of their role if they believe the analysis will affect their pay grade. They may downplay difficulties if they fear their role will be eliminated. Managers may describe the role as it should be, not as it is. Multi-source validation — collecting data from the jobholder, manager, and peers, and triangulating against observational data — is the best available defence against this.</p>
+      </div>
+    </div>
+    <div class="challenge-item">
+      <div class="challenge-icon">⚖</div>
+      <div>
+        <div class="challenge-title">Balancing Standardisation and Flexibility</div>
+        <p class="challenge-body">Organisations need standardised job documentation for legal defensibility, pay equity, and consistent selection processes. But jobs — especially in dynamic industries — vary significantly by location, season, and team context. Overly rigid job descriptions constrain performance; overly flexible ones provide no consistent basis for evaluation. The emerging practice of using competency frameworks as a flexible spine — while allowing task-level documentation to vary — is a productive middle ground.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reflection">
+    <div class="ref-label">✦ Reflect</div>
+    <ol>
+      <li>If you were conducting a job analysis and discovered that a jobholder was significantly exaggerating the demands of their role, how would you handle it — both methodologically and interpersonally?</li>
+      <li>How should job analysis documentation handle tasks that employees perform only during peak periods (e.g., festive season surge handling in a logistics firm)?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 8 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="s8">
+  <div class="section-label">
+    <span class="num">08</span><span class="bar"></span>
+  </div>
+  <h2>Job Analysis in the Age of AI and Data Analytics</h2>
+
+  <p>The long-term trajectory of job analysis is being reshaped by two forces: the rapid emergence of AI in the workplace, and the growing availability of data about how work is actually performed. Together, they are not replacing job analysis — they are making it more important and more complex simultaneously.</p>
+
+  <h3>Emerging Skills and Dynamic Role Profiles</h3>
+
+  <p>AI is both eliminating task categories and creating new ones. Routine cognitive tasks — form processing, data entry, basic report generation — are being automated. In their place, roles are adding new demands: prompt engineering, AI output validation, ethical oversight, and the ability to collaborate with AI tools as a working partner. A job description written before these changes is not merely out of date — it actively misleads recruiters, trainers, and the employees themselves about what the job requires.</p>
+
+  <h3>Competency-Based Work Design</h3>
+
+  <p>As AI handles more task-level work, the competitive value of human contribution increasingly lies in capabilities that are hard to automate — complex judgment, emotional intelligence, contextual reasoning, creative problem-solving, and ethical decision-making. This is driving a shift from <em>task-based</em> job documentation toward <em>competency-based</em> frameworks that describe what people need to be capable of, rather than what they specifically do on any given day. Job analysis is evolving to support this shift.</p>
+
+  <h3>Continuous Job Analysis and Workforce Agility</h3>
+
+  <p>Traditional job analysis produced a document that was reviewed every two to three years. In fast-moving industries, that cycle is too slow. Leading organisations are experimenting with continuous job analysis — using real-time data (from project management tools, email metadata, workflow systems, and skills platforms) to monitor how role content is actually evolving, and triggering documentation updates when significant drift is detected. This is not surveillance; it is intelligence about the workforce.</p>
+
+  <div class="callout callout-navy">
+    <div class="callout-label">🔭 Looking Ahead</div>
+    <p style="margin:0">The most significant shift AI brings to job analysis is this: the gap between the <em>formal</em> job and the <em>real</em> job — always present, often undocumented — is widening. As AI tools give employees new capabilities and create new informal tasks, the traditional job analysis cycle risks falling further behind. The organisations that close this gap fastest will have a structural advantage in talent management, compensation equity, and organisational design.</p>
+  </div>
+
+  <div class="reflection">
+    <div class="ref-label">✦ Reflect</div>
+    <ol>
+      <li>Identify one specific task in any knowledge-worker role that AI is likely to automate within the next five years. What new task would likely replace it — and would job analysis methods need to change to capture the new task?</li>
+      <li>Is continuous job analysis feasible in a mid-sized Indian firm? What would be the biggest implementation barriers?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 9 — SIMULATION PREP -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="s9">
+  <div class="section-label">
+    <span class="num">09</span><span class="bar"></span>
+  </div>
+  <h2>Preparing for the Simulation</h2>
+
+  <p>You are about to conduct a job analysis — not read about one. That shift in stance matters. Reading about job analysis makes you knowledgeable. Doing one makes you analytical. The simulation asks you to work like an HR consultant: collecting evidence, making judgment calls, and converting raw information into professional documentation.</p>
+
+  <p>Before you begin, consider the following questions seriously. They are not comprehension checks — they are the actual decisions you will face in the simulation.</p>
+
+  <div class="sim-prep">
+    <div class="sim-label">Your Consultant Brief</div>
+    <h3>Think Like an HR Analyst</h3>
+    <p>Read each question carefully. There are no single right answers — but there are better and worse answers, and you will be asked to defend yours.</p>
+    <ul class="sim-questions">
+      <li>
+        <span class="sim-q-num">1</span>
+        <span class="q-text"><strong>What information would you collect?</strong> Beyond the obvious tasks and qualifications, what does a thorough job analysis need that most people overlook? Think about informal tasks, seasonal variations, psychosocial demands, and the gap between the formal role and real behaviour.</span>
+      </li>
+      <li>
+        <span class="sim-q-num">2</span>
+        <span class="q-text"><strong>Whom would you interview?</strong> The jobholder is the starting point — but they are not the only source. Who else holds a useful perspective on this role? Who sees its outputs? Who depends on it? Who created it?</span>
+      </li>
+      <li>
+        <span class="sim-q-num">3</span>
+        <span class="q-text"><strong>Which method would you choose — and why?</strong> Given the nature of the role and the source materials available to you, which method is most appropriate? What are you giving up by not using another method alongside it?</span>
+      </li>
+      <li>
+        <span class="sim-q-num">4</span>
+        <span class="q-text"><strong>How do you distinguish tasks from competencies?</strong> If a jobholder says "I manage relationships with difficult clients," is that a task, a competency, or both? How do you document it accurately — and why does the distinction matter?</span>
+      </li>
+      <li>
+        <span class="sim-q-num">5</span>
+        <span class="q-text"><strong>How do you convert raw information into a job description?</strong> Source materials are messy and unstructured. A job description is clean and professional. What decisions do you make in between — and who validates them?</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="callout callout-insight" style="margin-top: 1.5rem;">
+    <div class="callout-label">💡 A Word on Informal Tasks</div>
+    <p style="margin:0">In your simulation, you will encounter tasks that employees perform regularly but that do not appear in any formal documentation. These informal or emergent tasks are not peripheral curiosities — they are often the most analytically significant finding in a real job analysis. How you document them, and what you recommend the organisation do about them, is one of the highest-stakes decisions in the exercise.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- DISCUSSION QUESTIONS -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="sdq">
+  <div class="section-label">
+    <span class="num">—</span><span class="bar"></span>
+  </div>
+  <h2>Discussion Questions</h2>
+  <p>Use these in the ten minutes before your simulation begins. They are designed to surface assumptions, provoke disagreement, and warm up your analytical thinking.</p>
+
+  <div class="dq-list">
+    <div class="dq-item">
+      <div class="dq-num">1</div>
+      <div class="dq-text">If a manager and a jobholder give contradictory descriptions of the same role — the manager says it is routine, the jobholder says it requires constant independent judgment — whose account should the job analyst trust, and how would you find out which is more accurate?</div>
+    </div>
+    <div class="dq-item">
+      <div class="dq-num">2</div>
+      <div class="dq-text">An employee has been performing tasks that are significantly beyond their formal job description for three years without additional pay or recognition. What are the HR implications — for compensation, legal compliance, and employee relations — and what should the organisation do?</div>
+    </div>
+    <div class="dq-item">
+      <div class="dq-num">3</div>
+      <div class="dq-text">You are asked to conduct a job analysis for a role that is being considered for elimination due to automation. The current jobholder knows this. How does that context change your methodology — and your ethics?</div>
+    </div>
+    <div class="dq-item">
+      <div class="dq-num">4</div>
+      <div class="dq-text">Is it possible for a job description to be too accurate? What are the risks of documenting everything a jobholder does — including tasks that are informally expected but legally ambiguous?</div>
+    </div>
+    <div class="dq-item">
+      <div class="dq-num">5</div>
+      <div class="dq-text">In your own industry of interest, identify one role where the formal job title and the actual work performed are significantly misaligned. What caused that gap — and what would fixing it require?</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- GLOSSARY -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="s10">
+  <div class="section-label">
+    <span class="num">—</span><span class="bar"></span>
+  </div>
+  <h2>Glossary of Key Terms</h2>
+
+  <div class="glossary-grid">
+    <div class="glossary-item">
+      <div class="glos-term">Job Analysis</div>
+      <div class="glos-def">A systematic process of collecting and analysing information about the tasks, responsibilities, KSAs, and context of a specific job.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glos-term">Job Description</div>
+      <div class="glos-def">A document that describes what a job involves — its purpose, responsibilities, reporting relationships, and working conditions. Describes the job, not the person.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glos-term">Job Specification</div>
+      <div class="glos-def">A document that describes what a person must bring to a job — qualifications, skills, experience, and abilities required for competent performance.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glos-term">KSA</div>
+      <div class="glos-def">Knowledge, Skills, and Abilities — the three-part framework for describing human competency requirements in a role.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glos-term">Task</div>
+      <div class="glos-def">A discrete, observable unit of work with a defined beginning and end. The most granular level of job analysis data.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glos-term">Duty</div>
+      <div class="glos-def">A cluster of related tasks forming a major area of work. Duties are typically used to organise the responsibilities section of a job description.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glos-term">Competency</div>
+      <div class="glos-def">A measurable pattern of knowledge, skills, abilities, and behaviours that enables effective performance in a role.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glos-term">Critical Incident Technique</div>
+      <div class="glos-def">A job analysis method developed by Flanagan (1954) that collects specific examples of highly effective or ineffective job behaviour to identify performance-critical competencies.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glos-term">Observation Method</div>
+      <div class="glos-def">A job analysis method in which an analyst directly shadows a jobholder during normal work, documenting tasks, tools, conditions, and interactions.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glos-term">Job Evaluation</div>
+      <div class="glos-def">A systematic process for determining the relative internal worth of jobs, using job analysis data as its evidence base. Distinct from job analysis — evaluation determines worth; analysis determines content.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glos-term">Emergent Task</div>
+      <div class="glos-def">A task that a jobholder performs regularly in practice but that does not appear in any formal job documentation. Identifying emergent tasks is one of the most practically important outputs of a thorough job analysis.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glos-term">Triangulation</div>
+      <div class="glos-def">The practice of using multiple data sources or methods to validate findings. In job analysis, triangulation across interviews, observations, and questionnaires produces more reliable data than any single method alone.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glos-term">Position Analysis Questionnaire</div>
+      <div class="glos-def">A standardised, structured instrument used in job analysis that evaluates roles across 187 job elements grouped into six categories, enabling quantitative comparison across positions.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glos-term">Hawthorne Effect</div>
+      <div class="glos-def">The tendency of employees to modify their behaviour when they know they are being observed — a key limitation of the observation method in job analysis.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- CREDITS -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="section" id="scredits">
+  <div class="credits">
+    <div class="credits-label">Credits &amp; References</div>
+    <p>This learning resource was developed by synthesising insights from the following publicly available sources:</p>
+    <ul style="margin: 0.5rem 0 0 1.1rem; line-height: 1.8;">
+      <li>Indeed Editorial Team. <em>The Importance of Performing a Jobs Analysis (With Examples).</em> Indeed Career Guide. Updated December 16, 2025. <a href="https://www.indeed.com/career-advice/career-development/jobs-analysis" target="_blank">indeed.com</a></li>
+      <li>Indeed Editorial Team. <em>Methods of Job Analysis (With Definition, Benefits and Uses).</em> Indeed Career Guide. Updated June 15, 2026. <a href="https://www.indeed.com/career-advice/career-development/methods-of-job-analysis" target="_blank">indeed.com</a></li>
+    </ul>
+    <p style="margin-top: 0.75rem;">Content has been substantially reorganised, expanded, and contextualised for MBA-level instructional use. All examples, case illustrations, and analytical extensions are original to this resource.</p>
+    <div class="ai-statement">
+      <strong>AI Use Statement:</strong> This learning resource was developed with the assistance of generative artificial intelligence (AI) and subsequently reviewed and curated for educational purposes. AI was used to synthesise publicly available information, improve readability, and support instructional design. The final content reflects human editorial judgment and institutional context.
+    </div>
+  </div>
+</section>
+
+</div><!-- /.wrap -->
+</main>
+
+<!-- ── FOOTER ────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <p><strong>Dr. Sathiyaseelan B</strong> · Professor, MBA Programme · School of Business and Management · CHRIST (Deemed to be University), Bengaluru</p>
+  <p style="margin-top:0.3rem;">Compensation Management · Trimester IV · Job Analysis Pre-Read</p>
+</footer>
+
+</body>
+</html>
